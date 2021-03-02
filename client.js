@@ -26,7 +26,7 @@ const employees = [
   {
     name: 'Mayella',
     employeeNumber: '89068',
-    annualSalary: '35000',
+    annualSalary: '35000', 
     reviewRating: 1
   }
 ];
@@ -40,4 +40,7 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-console.log( employees );
+// console.log( employees );
+for (employee of employees){
+  console.log (employee.annualSalary);
+}
