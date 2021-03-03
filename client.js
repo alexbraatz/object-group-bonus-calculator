@@ -1,3 +1,27 @@
+// let array = [ "snacks", "books", "dog", "tv" ];
+
+// let human = {
+//   name: "Alex",
+//   favoriteChips: "Doritos",
+//   favoriteDip: "Salsa",
+//   favoriteDrink: "Green Juice",
+//   favoriteTreat: "Hi-Chews"
+// };
+
+// human.favoriteBeer = "IPA";
+
+// console.log( human );
+
+let employeename = "Mayella"
+
+employeeWithBonus = []
+employeeWithBonus[0] = employeename;
+console.log( employeeWithBonus );
+
+//employeename ="Mayella";
+employeeWithBonus[1] = employeename;
+console.log( employeeWithBonus );
+
 const employees = [
   {
     name: 'Atticus',
@@ -40,32 +64,34 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
+let bonusPercent = 0;
+let annualCompensation = 0;
+let bonus = bonusPercent * annualCompensation;
+let employeesWithBonus = [];
+
+let employeeBonusInfo = {
+  name: "name",
+  bonusPercentage: bonusPercent,
+  totalCompensation : annualCompensation, // (base annual + bonus)
+  totalBonus: bonus // (bonusPercent * salary)
+};
 
 function employeeBonusCaluculator( listOfEmployees ){
-    let bonusPercent = 0;
-    let annualCompensation = 0;
-    let bonus = bonusPercent * annualCompensation;
-    let employeesWithBonus = [];
-
-    let employeeBonusInfo = {
-        name: "name",
-        bonusPercentage: bonusPercent,
-        totalCompensation: annualCompensation, // (base annual + bonus)
-        totalBonus: bonus // (bonusPercent * salary)
-    };
     
-    for ( employee of listOfEmployees ){
+  for ( let employee of listOfEmployees ){
 
-      if ( employee.reviewRating <= 2 ){
-        employeeBonusInfo.name = employee.name;
-        employeeBonusInfo.bonusPercentage = 0;
-        employeeBonusInfo.totalCompensation = Number(employee.annualSalary) + ( Number( employee.annualSalary ) * Number( employeeBonusInfo.bonusPercentage ) );
-        employeesWithBonus.push( employeeBonusInfo );
-      }
-
+    if ( employee.reviewRating <= 2 ){
+      //console.log( employee );
+      employeeBonusInfo.name = employee.name;
+      employeeBonusInfo.bonusPercentage = 0.5;
+      employeeBonusInfo.totalBonus = ( Number( employee.annualSalary ) * Number( employeeBonusInfo.bonusPercentage ) );
+      employeeBonusInfo.totalCompensation = Number(employee.annualSalary) + ( Number( employee.annualSalary ) * Number( employeeBonusInfo.bonusPercentage ) );
+      employeesWithBonus.push( employeeBonusInfo );
     }
 
-    return employeesWithBonus;
+  }
+
+  return employeesWithBonus;
 }
 
 console.log( employeeBonusCaluculator( employees ) );
