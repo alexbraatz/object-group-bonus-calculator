@@ -40,12 +40,12 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-let employeesWithBonus = [];
 
 function employeeBonusCaluculator( listOfEmployees ){
     let bonusPercent = 0;
-    let annualCompensation = '100';
+    let annualCompensation = 0;
     let bonus = bonusPercent * annualCompensation;
+    let employeesWithBonus = [];
 
     let employeeBonusInfo = {
         name: "name",
@@ -55,13 +55,16 @@ function employeeBonusCaluculator( listOfEmployees ){
     };
     
     for ( employee of listOfEmployees ){
-        if ( employee.reviewRating <= 2 ){
-            employeeBonusInfo.name = employee.name;
-            employeesWithBonus.push( employeeBonusInfo );
-        }
+
+      if ( employee.reviewRating <= 2 ){
+        employeeBonusInfo.name = employee.name;
+        employeeBonusInfo.bonusPercentage = 0;
+        employeeBonusInfo.totalCompensation = Number(employee.annualSalary) + ( Number( employee.annualSalary ) * Number( employeeBonusInfo.bonusPercentage ) );
+        employeesWithBonus.push( employeeBonusInfo );
+      }
+
     }
 
-    
     return employeesWithBonus;
 }
 
